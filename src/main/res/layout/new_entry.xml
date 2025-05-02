@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green">
+
+    <!-- Cancel Button on top left -->
+    <ImageButton
+        android:id="@+id/imgbackbtn"
+        android:layout_width="80dp"
+        android:layout_height="51dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="31dp"
+        android:contentDescription="button to go back"
+        android:background="@color/dark_blue"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        app:srcCompat="@drawable/bring_back" />
+
+
+    <!-- Scrollable Form Area -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/imgbackbtn"
+        android:layout_marginTop="12dp"
+        android:paddingHorizontal="16dp">
+
+        <LinearLayout
+            android:id="@+id/contentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/background"
+            android:padding="24dp"
+            android:elevation="4dp">
+
+            <!-- Category Icon -->
+            <ImageView
+                android:id="@+id/categoryIcon"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_gravity="center"
+                android:contentDescription="Category Icon"
+                android:scaleType="centerInside"
+                android:src="@drawable/bank_icon"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Category Title -->
+            <TextView
+                android:id="@+id/categoryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/Teal_text"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Spinner -->
+            <Spinner
+                android:id="@+id/categorySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/light_white" />
+
+            <!-- Income/Expense toggle -->
+            <RadioGroup
+                android:id="@+id/rgTransactionType"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@color/lightest_green"
+                >
+
+                <RadioButton
+                    android:id="@+id/rbIncome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Income" />
+
+                <RadioButton
+                    android:id="@+id/rbExpense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expense"
+                    android:layout_marginStart="16dp" />
+            </RadioGroup>
+
+            <!-- Input Fields -->
+            <EditText
+                android:id="@+id/dateInput"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select Date"
+                android:focusable="false"
+                android:background="@color/lightest_green"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/startTimeInput"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select Start Time"
+                android:focusable="false"
+                android:background="@color/lightest_green"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/endTimeInput"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select End Time"
+                android:focusable="false"
+                android:background="@color/lightest_green"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/descriptionInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Description"
+                android:background="@color/lightest_green"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/amountInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Amount"
+                android:inputType="numberDecimal"
+                android:background="@color/lightest_green"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/noteInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Note"
+                android:background="@color/lightest_green"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Receipt Image -->
+            <ImageView
+                android:id="@+id/receiptImageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/lightest_green"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="Receipt Image" />
+
+            <!-- Image Selection Button -->
+            <Button
+                android:id="@+id/selectImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Image"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/lightest_green"
+                android:textColor="@color/Teal_text"
+                android:layout_marginBottom="24dp" />
+
+
+            <!-- Save Button -->
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Entry"
+                android:backgroundTint="@color/green"
+                android:textColor="@color/Teal_text"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

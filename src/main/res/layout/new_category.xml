@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/overlayRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#88000000">
+
+    <LinearLayout
+        android:id="@+id/dialogContainer"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Category"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+        <EditText
+            android:id="@+id/editTextCategoryName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Write..."
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/lightest_green"/>
+
+        <ImageView
+            android:id="@+id/imagePreview"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/bank_icon"
+            android:background="@color/lightest_green"
+            android:scaleType="centerCrop" />
+
+        <Button
+            android:id="@+id/btnSelectImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Image"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/lightest_green"
+            android:textColor="@color/Teal_text" />
+
+        <Button
+            android:id="@+id/btnSaveCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Teal_text"
+            android:text="Save"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/green"/>
+
+        <Button
+            android:id="@+id/btnCancelCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Teal_text"
+            android:text="Cancel"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/lightest_green"/>
+
+    </LinearLayout>
+</RelativeLayout>
