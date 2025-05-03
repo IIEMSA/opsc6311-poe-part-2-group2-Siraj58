@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         textMinMaxGoalsValue = findViewById(R.id.textMinMaxGoalsValue)
         resetGoalsButton = findViewById(R.id.button4)
         homeBtn = findViewById(R.id.imgbtnHome)
-        analysisBtn = findViewById(R.id.imgbtnAnalysis)
         transactionsBtn = findViewById(R.id.imgbtnTransactions)
         categoriesBtn = findViewById(R.id.imgbtnCategories)
 
@@ -88,10 +87,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
         }
 
-//        analysisBtn.setOnClickListener {
-//            startActivity(Intent(this, AnalysisActivity::class.java))
-//        }
-//
         transactionsBtn.setOnClickListener {
             startActivity(Intent(this, TransactionsActivity::class.java))
         }

@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature android:name="android.hardware.camera.any" android:required="false"/>
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,10 +20,15 @@
         <activity android:name=".LoginActivity"/>
         <activity android:name=".SignUpPageActivity"/>
         <activity android:name=".LoginPageActivity"/>
-        <activity android:name=".CategoriesActivity"/>
-        <activity android:name=".NewEntryActivity"/>
         <activity android:name=".TransactionsActivity"/>
-
+        <activity android:name=".CategoriesActivity"/>
+        <activity android:name=".ViewEntriesActivity"/>
+        <activity
+            android:name=".CameraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddExpenseActivity"
+            android:exported="false" />
         <activity
             android:name=".StartUpScreenActivity"
             android:exported="true">
@@ -29,6 +38,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
         <meta-data
             android:name="preloaded_fonts"

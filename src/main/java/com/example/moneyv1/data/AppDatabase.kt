@@ -1,27 +1,27 @@
-package com.example.moneyv1.data
+// AppDatabase.kt
+package com.example.moneyv1
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.moneyv1.model.Category
-import com.example.moneyv1.model.TransactionEntry
 
-@Database(entities = [Category::class, TransactionEntry::class], version = 1)
+@Database(entities = [Category::class,Entry::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun appDao(): AppDao
+    abstract fun categoryDao(): CategoryDao
     abstract fun entryDao(): EntryDao
 
     companion object {
-        @Volatile private var instance: AppDatabase? = null
+        @Volatile private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(context: Context): AppDatabase =
-            instance ?: synchronized(this) {
-                instance ?: Room.databaseBuilder(
+        fun getDatabase(context: Context): AppDatabase {
+            return INSTANCE ?: synchronized(this) {
+                Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "moneyv1_db"
-                ).build().also { instance = it }
+                    "money_database"
+                ).build().also { INSTANCE = it }
             }
+        }
     }
 }

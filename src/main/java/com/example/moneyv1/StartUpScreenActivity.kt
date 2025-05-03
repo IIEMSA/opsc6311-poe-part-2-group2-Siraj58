@@ -48,7 +48,7 @@ class StartUpScreenActivity : AppCompatActivity() {
     }
 
     private fun checkLoginStatus(): Boolean {
-        // Replace with Firebase or shared preferences logic
+        // Replace with Firebase or shared preferences logic later
         val prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         return prefs.getBoolean("loggedIn", false)
     }

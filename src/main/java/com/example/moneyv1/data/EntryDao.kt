@@ -1,14 +1,15 @@
-package com.example.moneyv1.data
+// EntryDao.kt
+package com.example.moneyv1
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
-import com.example.moneyv1.model.TransactionEntry
 
 @Dao
 interface EntryDao {
+    @Insert
+    suspend fun insert(entry: Entry)
 
-    @Query("SELECT * FROM transactions")
-    suspend fun getAllEntries(): List<TransactionEntry>
-
-    // Add any other needed queries here
+    @Query("SELECT * FROM Entry")
+    suspend fun getAllEntries(): List<Entry>
 }

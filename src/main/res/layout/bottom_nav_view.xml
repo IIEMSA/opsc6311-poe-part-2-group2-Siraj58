@@ -5,66 +5,56 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!-- Background Panel Image -->
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginTop="800dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="124dp"
+        android:scaleType="fitXY"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/bottom_nav_panel" />
 
+    <!-- Home Button -->
     <ImageButton
         android:id="@+id/imgbtnHome"
         android:layout_width="84dp"
         android:layout_height="64dp"
-        android:layout_marginStart="16dp"
         android:background="@null"
         android:contentDescription="Redirects to Home"
+        app:srcCompat="@drawable/home"
         app:layout_constraintTop_toTopOf="@id/imageView6"
         app:layout_constraintBottom_toBottomOf="@id/imageView6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/home_icon" />
+        android:layout_marginStart="16dp" />
 
-    <ImageButton
-        android:id="@+id/imgbtnAnalysis"
-        android:layout_width="93dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="12dp"
-        android:background="@null"
-        android:contentDescription="Redirects to Analysis"
-        app:layout_constraintTop_toTopOf="@id/imageView6"
-        app:layout_constraintBottom_toBottomOf="@id/imageView6"
-        app:layout_constraintStart_toEndOf="@id/imgbtnHome"
-        app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/analysis_icon" />
-
+    <!-- Transactions Button -->
     <ImageButton
         android:id="@+id/imgbtnTransactions"
         android:layout_width="92dp"
         android:layout_height="62dp"
-        android:layout_marginEnd="8dp"
         android:background="@null"
         android:contentDescription="Redirects to Transactions"
+        app:srcCompat="@drawable/transactions"
         app:layout_constraintTop_toTopOf="@id/imageView6"
         app:layout_constraintBottom_toBottomOf="@id/imageView6"
+        app:layout_constraintStart_toEndOf="@id/imgbtnHome"
         app:layout_constraintEnd_toStartOf="@id/imgbtnCategories"
-        app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/transactions_icon" />
+        app:layout_constraintHorizontal_bias="0.5" />
 
+    <!-- Categories Button -->
     <ImageButton
         android:id="@+id/imgbtnCategories"
         android:layout_width="91dp"
         android:layout_height="59dp"
         android:background="@null"
         android:contentDescription="Redirects to Categories"
+        app:srcCompat="@drawable/categories"
         app:layout_constraintTop_toTopOf="@id/imageView6"
         app:layout_constraintBottom_toBottomOf="@id/imageView6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/categories" />
+        android:layout_marginEnd="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

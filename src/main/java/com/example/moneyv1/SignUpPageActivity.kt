@@ -36,12 +36,16 @@ class SignUpPageActivity : AppCompatActivity() {
             val userEmail = email.text.toString().trim()
             val pass = password.text.toString()
             val confirmPass = confirmPassword.text.toString()
+			
+			
 
             if (name.isEmpty() || name.equals("Full name") || userEmail.isEmpty() ||
                 userEmail.equals("example@gmail.com")|| pass.isEmpty() || confirmPass.isEmpty()) {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
             } else if (pass != confirmPass) {
                 Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+            }else if (!userEmail.contains("@")) {
+                Toast.makeText(this, "Not a valid Email. Include @ in email address", Toast.LENGTH_SHORT).show()
             } else {
                 val editor = sharedPref.edit()
                 editor.putString("email", userEmail)

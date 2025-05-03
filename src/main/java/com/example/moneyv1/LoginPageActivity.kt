@@ -10,7 +10,9 @@ class LoginPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loginpage)
-
+		
+		findViewById<EditText>(R.id.editTextText).text.clear()
+		
         val emailField = findViewById<EditText>(R.id.editTextText)
         val passwordField = findViewById<EditText>(R.id.editTextTextPassword2)
         val loginButton = findViewById<Button>(R.id.button)

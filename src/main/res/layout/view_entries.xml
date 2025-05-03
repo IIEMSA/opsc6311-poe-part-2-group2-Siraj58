@@ -32,7 +32,7 @@
             android:background="@color/light_white"
 
             android:padding="12dp"
-             />
+            />
 
         <!-- Date Pickers -->
         <EditText
@@ -76,6 +76,13 @@
                 android:text="Expense"
                 android:layout_marginStart="16dp" />
         </RadioGroup>
+
+        <Button
+            android:id="@+id/btnClearFilters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear Filters"
+            android:layout_marginTop="8dp"/>
 
         <!-- Search Button -->
         <Button
