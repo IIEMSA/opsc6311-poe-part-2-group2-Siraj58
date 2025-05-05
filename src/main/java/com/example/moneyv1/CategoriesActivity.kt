@@ -2,10 +2,13 @@ package com.example.moneyv1
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -15,12 +18,19 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
+import com.example.moneyv1.CategoriesActivity.Companion.IMAGE_PICK_CODE
 import kotlinx.coroutines.launch
 
 class CategoriesActivity : AppCompatActivity() {
 
     private lateinit var categoryDao: CategoryDao
     private lateinit var recyclerView: RecyclerView
+
+    private var selectedImageUri: Uri? = null  // Store the selected image URI
+
+    companion object {
+        private const val IMAGE_PICK_CODE = 2000
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +48,24 @@ class CategoriesActivity : AppCompatActivity() {
         val backgroundView = findViewById<ConstraintLayout>(R.id.backgroundInclude)
         val textHeading = backgroundView.findViewById<TextView>(R.id.textHeading)
         textHeading.text = "Categories"
+
+        // Navigation button setup (from included bottom_nav_view)
+        val homeBtn: ImageButton = findViewById(R.id.imgbtnHome)
+        val transactionsBtn: ImageButton = findViewById(R.id.imgbtnTransactions)
+        val categoriesBtn: ImageButton = findViewById(R.id.imgbtnCategories)
+
+        // Set click listeners
+        homeBtn.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
+        transactionsBtn.setOnClickListener {
+            startActivity(Intent(this, TransactionsActivity::class.java))
+        }
+
+        categoriesBtn.setOnClickListener {
+            startActivity(Intent(this, CategoriesActivity::class.java))
+        }
 
         // Set up the add category button
         val imgAddCategory = findViewById<ImageView>(R.id.imgAddCategory)
@@ -68,15 +96,26 @@ class CategoriesActivity : AppCompatActivity() {
 
         val editTextCategoryName = dialogView.findViewById<EditText>(R.id.editTextCategoryName)
         val imagePreview = dialogView.findViewById<ImageView>(R.id.imagePreview)
+        val btnaddImage = dialogView.findViewById<Button>(R.id.btnSelectImage)
         val btnSaveCategory = dialogView.findViewById<Button>(R.id.btnSaveCategory)
         val btnCancelCategory = dialogView.findViewById<Button>(R.id.btnCancelCategory)
+
+        // Image from gallery
+        btnaddImage.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivityForResult(intent, IMAGE_PICK_CODE)
+        }
 
         // Set up save button
         btnSaveCategory.setOnClickListener {
             val categoryName = editTextCategoryName.text.toString()
+
             if (categoryName.isNotEmpty()) {
                 // Save the category to the database
-                val category = Category(name = categoryName, picture = "default_image_url")
+                val imagePath = selectedImageUri?.toString() ?: "default_image_url"
+                val category = Category(name = categoryName, picture = imagePath)
+
                 lifecycleScope.launch {
                     categoryDao.insert(category)
                     Toast.makeText(this@CategoriesActivity, "Category added", Toast.LENGTH_SHORT).show()
@@ -96,5 +135,18 @@ class CategoriesActivity : AppCompatActivity() {
         }
 
         dialog.show()
+    }
+
+    // Handle the image selection from the gallery
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == IMAGE_PICK_CODE && resultCode == RESULT_OK && data != null) {
+            selectedImageUri = data.data
+
+            // Show the selected image as a preview
+            val imagePreview = (currentFocus?.rootView as? ConstraintLayout)?.findViewById<ImageView>(R.id.imagePreview)
+            imagePreview?.setImageURI(selectedImageUri)
+        }
     }
 }

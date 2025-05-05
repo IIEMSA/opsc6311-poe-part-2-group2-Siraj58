@@ -67,19 +67,14 @@ class AddExpenseActivity : AppCompatActivity() {
         // Handle image result from camera
         val cameraResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                val data: Intent? = result.data
-                val byteArray = data?.getByteArrayExtra("captured_image_bytes")
-                byteArray?.let {
-                    val bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
-                    imageView.setImageBitmap(bitmap)
-
-                    // Optionally save bitmap to file to get URI for RoomDB
-                    val uri = saveBitmapToCache(bitmap)
-                    selectedImageUri = uri
+                val imageUriString = result.data?.getStringExtra("captured_image_uri")
+                if (!imageUriString.isNullOrEmpty()) {
+                    selectedImageUri = Uri.parse(imageUriString)
+                    imageView.setImageURI(selectedImageUri)
                 }
-
             }
         }
+
 
         // Back button functionality
         backButton.setOnClickListener {

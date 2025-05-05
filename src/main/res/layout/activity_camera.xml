@@ -8,80 +8,97 @@
         android:layout_height="match_parent"
         tools:context=".CameraActivity">
 
-        <LinearLayout
+        <!-- Main content -->
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <ImageButton
-                android:id="@+id/backButton"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="48dp"
-                android:background="@drawable/bring_back"
-                android:paddingStart="16dp"
-                android:paddingTop="8dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="8dp" />
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/nav_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:theme="@style/ThemeOverlay.AppCompat.Light"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
+            <!-- Camera preview or placeholder -->
             <ImageView
-                android:layout_width="189dp"
-                android:layout_height="189dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/icon_logo" />
+                android:id="@+id/cameraPlaceholder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/white_background"
+                tools:ignore="ContentDescription" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/poppins"
-                android:textColor="@color/dark_green"
-                android:textSize="20dp"
-                android:padding="5dp"
-                android:text="SMILE :-)" />
+            <!-- Overlay UI -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="top|center_horizontal">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="270dp"
-                android:layout_height="167dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp">
+                <!-- Back Button -->
+                <ImageButton
+                    android:id="@+id/backButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/bring_back"
+                    android:contentDescription="Back" />
 
-                <ImageView
-                    android:id="@+id/img_SavedPhoto"
+                <!-- Toolbar -->
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/nav_toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_launcher_background" />
-            </androidx.cardview.widget.CardView>
+                    android:layout_height="?attr/actionBarSize"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    tools:title="Camera" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/photoFab"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:src="@drawable/ic_photo"
-                app:backgroundTint="@color/blue" />
-        </LinearLayout>
+                <!-- Spacer -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <!-- Logo -->
+                <ImageView
+                    android:layout_width="189dp"
+                    android:layout_height="189dp"
+                    android:src="@drawable/icon_logo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/dark_green"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:text="SMILE :-)" />
+
+                <!-- Saved Image Preview -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="270dp"
+                    android:layout_height="167dp"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:id="@+id/img_SavedPhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_launcher_background" />
+                </androidx.cardview.widget.CardView>
+
+                <!-- FAB -->
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/photoFab"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:src="@drawable/ic_photo"
+                    app:backgroundTint="@color/blue" />
+            </LinearLayout>
+        </FrameLayout>
+
+
+        <!-- Navigation drawer could go here if needed -->
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

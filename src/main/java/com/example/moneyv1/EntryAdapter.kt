@@ -1,6 +1,7 @@
 package com.example.moneyv1
 
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,9 +41,11 @@ class EntryAdapter(private val entries: List<Entry>) : RecyclerView.Adapter<Entr
 
             // Show image if imageUri exists
             if (!entry.imageUri.isNullOrEmpty()) {
+                Log.d("EntryAdapter", "Image URI exists")
                 ivEntryImage.visibility = View.VISIBLE
                 ivEntryImage.setImageURI(Uri.parse(entry.imageUri))
             } else {
+                Log.d("EntryAdapter", "No Image URI")
                 ivEntryImage.visibility = View.GONE
             }
         }

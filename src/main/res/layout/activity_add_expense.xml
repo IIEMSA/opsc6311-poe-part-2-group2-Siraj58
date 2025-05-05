@@ -125,20 +125,21 @@
                 android:layout_marginBottom="16dp" />
 
             <!-- Description Input -->
+			  <EditText
+                android:id="@+id/TitleInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Title for Entry"
+                android:background="@drawable/input_background"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp" />
+			
+			
             <EditText
                 android:id="@+id/descriptionInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter Description"
-                android:background="@drawable/input_background"
-                android:padding="12dp"
-                android:layout_marginBottom="16dp" />
-
-            <EditText
-                android:id="@+id/TitleInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Title for Entry"
                 android:background="@drawable/input_background"
                 android:padding="12dp"
                 android:layout_marginBottom="16dp" />

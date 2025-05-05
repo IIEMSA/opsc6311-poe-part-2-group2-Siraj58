@@ -9,9 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.launch
 import android.app.DatePickerDialog
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.time.format.DateTimeParseException
 
 
 class ViewEntriesActivity : AppCompatActivity() {
@@ -32,6 +29,7 @@ class ViewEntriesActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.view_entries)
 
+        val backButton: Button = findViewById(R.id.backButton)
         recyclerView = findViewById(R.id.recyclerFilteredEntries)
         spinnerCategories = findViewById(R.id.spinnerCategories)
         editStartDate = findViewById(R.id.editStartDate)
@@ -52,6 +50,11 @@ class ViewEntriesActivity : AppCompatActivity() {
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categories)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerCategories.adapter = spinnerAdapter
+
+        // Back button
+        backButton.setOnClickListener {
+            finish()
+        }
 
         // Search Filter Button
         btnSearch.setOnClickListener {
